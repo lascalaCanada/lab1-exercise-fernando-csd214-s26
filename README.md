@@ -108,4 +108,27 @@ src/
 
 # LAB 1 - All statements
 
+## Phase 1
+
+### Analysis — Step 1 (Niche Selection & Analysis)
+
+* **Problem Statement**
+
+    The 3D Printer Store specializes in selling equipment, materials, and digital assets for hobbyists and professionals working with additive manufacturing. The store offers 3D printers, filaments, nozzles, accessories, and premium STL files for custom printing. Customers can also purchase pre‑printed customized pieces made on demand. The goal of the store is to provide a complete ecosystem for users who want reliable hardware, high‑quality materials, and exclusive digital models. 
+
+### Noun / Verb Table
+
+| **Nouns (Potential Classes / Attributes)** | **Verbs (Potential Methods)** |
+| --- | --- |
+| 3D Printer | Print() |
+| Filament | LoadMaterial() |
+| Nozzle | Replace() |
+| Accessory | Install() |
+| STL File | Download() |
+| Custom Printed Piece | Customize() |
+
+### Synonym Identification
+* Filament = Material
+* Nozzle = Extruder Tip
+
 *________________________________________________________________________________________*
