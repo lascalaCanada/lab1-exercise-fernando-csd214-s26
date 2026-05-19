@@ -235,6 +235,47 @@ Each concrete class (e.g., Filament, Nozzle) must:
     * For items without quantity (like STL files, if you add them later): simply return price.
     * Always interact with CashTill.
 
+## PHASE 3: Implementation (Java Beans)
 
+### **A. Abstract Niche Parent (PrinterItem.java)**
+Your abstract niche parent class must follow these rules:
+* **Must be abstract**
+
+  This prevents direct instantiation and enforces specialization.
+
+* **Must extend Product**
+
+  Ensures inheritance of base fields such as title, price, and copies.
+
+* **Must include the shared field**
+
+  Example for your niche:
+    * brand: String
+
+* **Encapsulation**
+
+  All fields must be private, with public getters and setters.
+
+* **No‑Arg Constructor**
+
+  Required for frameworks and reflection (Lab 4 compatibility).
+
+* **Loaded Constructor**
+
+  Must accept all fields of PrinterItem and call:
+  **super(...)**
+  to pass Product fields up the constructor chain (“Bucket Brigade”).
+
+* **Override initialize(Scanner input)**
+
+  Must call:
+  **super.initialize(input)**
+  before reading niche‑specific fields.
+
+* **Override edit(Scanner input)**
+
+  Must call:
+  **super.edit(input)**
+  before editing niche‑specific fields.
 
 *________________________________________________________________________________________*
