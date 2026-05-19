@@ -278,4 +278,58 @@ Your abstract niche parent class must follow these rules:
   **super.edit(input)**
   before editing niche‑specific fields.
 
+### ***B. Concrete Niche Items (Filament.java, Nozzle.java)***
+Each concrete class must follow these rules:
+
+* **Must extend PrinterItem**
+
+Ensures inheritance of shared niche fields and Product fields.
+
+* **Must include its unique field**
+
+  Examples:
+    * Filament → materialType: String
+    * Nozzle → diameter: double
+
+* **Encapsulation**
+
+  All fields private, with public getters and setters.
+
+* **No‑Arg Constructor**
+
+  Required for Java Bean compliance.
+
+* **Loaded Constructor with Constructor Chaining**
+
+  Must accept all fields (including inherited ones) and call:
+  **super(...)**
+  to pass data up the hierarchy.
+
+* **Override initialize(Scanner input)**
+
+  Must call:
+  **super.initialize(input)**
+  before reading its own fields.
+
+* **Override edit(Scanner input)**
+
+  Must call:
+  **super.edit(input)**
+  before editing its own fields.
+
+* **Override sellItem()
+
+  Must implement niche‑specific behavior.
+  Example:
+  “Processing sale for Filament…”
+  or
+  “Heating nozzle and processing sale…”
+
+* **Identity Methods (Lab 3 Prep)**
+
+  Must generate:
+    * toString() (including super.toString())
+    * equals()
+    * hashCode()
+
 *________________________________________________________________________________________*
