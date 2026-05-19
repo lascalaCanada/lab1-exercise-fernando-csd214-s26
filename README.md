@@ -108,15 +108,16 @@ src/
 
 # LAB 1 - All statements
 
-## Phase 1
+## PHASE 1
 
-### Analysis — Step 1 (Niche Selection & Analysis)
+### STEP 1 (Niche Selection & Analysis)
+### ***Analysis***
 
 * **Problem Statement**
 
     The 3D Printer Store specializes in selling equipment, materials, and digital assets for hobbyists and professionals working with additive manufacturing. The store offers 3D printers, filaments, nozzles, accessories, and premium STL files for custom printing. Customers can also purchase pre‑printed customized pieces made on demand. The goal of the store is to provide a complete ecosystem for users who want reliable hardware, high‑quality materials, and exclusive digital models. 
 
-### Noun / Verb Table
+### ***Noun / Verb Table***
 
 | **Nouns (Potential Classes / Attributes)** | **Verbs (Potential Methods)** |
 | --- | --- |
@@ -127,53 +128,53 @@ src/
 | STL File | Download() |
 | Custom Printed Piece | Customize() |
 
-### Synonym Identification
+### ***Synonym Identification***
 * Filament = Material
 * Nozzle = Extruder Tip
 
-## PHASE 2
+## STEP 2
 ### AI‑Assisted Architectural Blueprinting
 
-#### Abstract Class (extends Product)
+#### ***Abstract Class (extends Product)***
 * Class Name: PrinterItem
 * Parent Class: Product
 * Unique Field (common to all items in this niche):
 * * String brand
 
-#### Concrete Class 1
+#### ***Concrete Class 1***
 * Class Name: Filament
 * Parent Class: PrinterItem
 * Unique Field:
     * String materialType  
       (e.g., PLA, ABS, PETG)
 
-#### Concrete Class 2
+#### ***Concrete Class 2***
 * Class Name: Nozzle
 * Parent Class: PrinterItem
 * Unique Field:
     * double diameter  
       (e.g., 0.4mm, 0.6mm, 0.8mm)
 
-## PHASE 3
+## STEP 3
 ### Implementation Standards (Java Bean Requirement)
 
-#### Java Bean Standards for All New Classes
-1. Encapsulation
+#### ***Java Bean Standards for All New Classes***
+1. **Encapsulation**
 
    All attributes must be declared as private, ensuring full encapsulation.
    Every field must have corresponding public getters and setters to allow controlled access and modification.
 
-2. No-Argument Constructor
+2. **No-Argument Constructor**
 
    Each class must include a no‑argument constructor.
    This is required for frameworks such as Hibernate/JPA (used in Lab 4) and ensures compatibility with reflection‑based instantiation.
 
-3. Loaded Constructor with Constructor Chaining
+3. **Loaded Constructor with Constructor Chaining**
 
    Each class must also include a loaded constructor that accepts all fields.
    This constructor must use super() to pass inherited attributes up the hierarchy, following the “Bucket Brigade” constructor‑chaining model from Lecture 3.
 
-4. Object Identity & Representation
+4. **Object Identity & Representation**
 
    Use IntelliJ’s Generate feature (Alt+Insert) to create:
 
@@ -181,5 +182,59 @@ src/
       Must include a call to super.toString() to ensure inherited fields are represented.
     * equals() and hashCode()  
       Required for comparing niche items, collections, and future persistence logic.
+
+## STEP 4
+### Implementation Requirements
+
+### ***Abstract Parent Class Requirements***
+Your abstract class (in your case: PrinterItem) must:
+
+* **Extend Product**  
+  This ensures it inherits base fields such as Title, Price, and Copies.
+
+    * Contain the shared field
+
+      Example:
+        * String brand
+
+* **Override initialize(Scanner input)**  
+  Must call:
+
+  **super.initialize(input)**  
+  so that Product fields are not lost.
+
+* **Override edit(Scanner input)**  
+  Must also call:
+
+  **super.edit(input)**  
+  to allow editing inherited fields before editing niche‑specific ones.
+
+### Concrete Child Class Requirements
+Each concrete class (e.g., Filament, Nozzle) must:
+
+* **Extend your abstract parent (PrinterItem)**
+* **Contain its unique field**  
+  Examples:
+
+    * Filament > String materialType
+    * Nozzle > double diameter
+
+* **Override initialize(Scanner input)**
+
+  Must call:
+  **super.initialize(input)**  
+  before reading its own fields.
+
+* **Override edit(Scanner input)**  
+  Must call:
+  **super.edit(input)**  
+  before editing its own fields.
+
+* **Override sellItem()**
+    * For items with quantity (like Filament): decrement copies.
+    * For items without quantity (like STL files, if you add them later): simply return price.
+    * Always interact with CashTill.
+
+
 
 *________________________________________________________________________________________*
