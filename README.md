@@ -154,6 +154,32 @@ src/
     * double diameter  
       (e.g., 0.4mm, 0.6mm, 0.8mm)
 
+## PHASE 3
+### Implementation Standards (Java Bean Requirement)
 
+#### Java Bean Standards for All New Classes
+1. Encapsulation
+
+   All attributes must be declared as private, ensuring full encapsulation.
+   Every field must have corresponding public getters and setters to allow controlled access and modification.
+
+2. No-Argument Constructor
+
+   Each class must include a no‑argument constructor.
+   This is required for frameworks such as Hibernate/JPA (used in Lab 4) and ensures compatibility with reflection‑based instantiation.
+
+3. Loaded Constructor with Constructor Chaining
+
+   Each class must also include a loaded constructor that accepts all fields.
+   This constructor must use super() to pass inherited attributes up the hierarchy, following the “Bucket Brigade” constructor‑chaining model from Lecture 3.
+
+4. Object Identity & Representation
+
+   Use IntelliJ’s Generate feature (Alt+Insert) to create:
+
+    * toString()  
+      Must include a call to super.toString() to ensure inherited fields are represented.
+    * equals() and hashCode()  
+      Required for comparing niche items, collections, and future persistence logic.
 
 *________________________________________________________________________________________*
