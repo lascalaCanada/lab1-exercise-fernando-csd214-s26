@@ -131,4 +131,29 @@ src/
 * Filament = Material
 * Nozzle = Extruder Tip
 
+## PHASE 2
+### AI‑Assisted Architectural Blueprinting
+
+#### Abstract Class (extends Product)
+* Class Name: PrinterItem
+* Parent Class: Product
+* Unique Field (common to all items in this niche):
+* * String brand
+
+#### Concrete Class 1
+* Class Name: Filament
+* Parent Class: PrinterItem
+* Unique Field:
+    * String materialType  
+      (e.g., PLA, ABS, PETG)
+
+#### Concrete Class 2
+* Class Name: Nozzle
+* Parent Class: PrinterItem
+* Unique Field:
+    * double diameter  
+      (e.g., 0.4mm, 0.6mm, 0.8mm)
+
+
+
 *________________________________________________________________________________________*
