@@ -70,6 +70,10 @@ public class App {
             System.out.println("3. Add DiscMag");
             System.out.println("4. Add Ticket");
             System.out.println("5. Add Tire");
+            // 3D Printer
+            System.out.println("6. Add Filament (3D Print)");
+            System.out.println("7. Add Nozzle (3D Print)");
+            // 3D Printer
             System.out.println("99. Exit");
 
             try {
@@ -89,6 +93,10 @@ public class App {
                 case 3: item = new DiscMag(); break;
                 case 4: item = new Ticket(); break;
                 case 5: item = new Tire(); break;
+                // 3D Printer
+                case 6: item = new Filament(); break;
+                case 7: item = new Nozzle(); break;
+                // 3D Printer
                 default: System.out.println("Invalid selection."); continue;
             }
 
@@ -117,6 +125,10 @@ public class App {
             System.out.println("4. DiscMags");
             System.out.println("5. Tickets");
             System.out.println("6. Tire");
+            // 3D Printer
+            System.out.println("7. Filament");
+            System.out.println("8. Nozzle");
+            // 3D Printer
             System.out.println("99. Exit");
 
             try {
@@ -137,6 +149,8 @@ public class App {
                 case 4: filter = DiscMag.class; break;
                 case 5: filter = Ticket.class; break;
                 case 6: filter = Tire.class; break;
+                case 7: filter = Filament.class; break;
+                case 8: filter = Nozzle.class; break;
                 default: System.out.println("Invalid selection."); continue;
             }
 
@@ -283,6 +297,28 @@ public class App {
                     faker.number().numberBetween(15, 22)     // diameter (e.g., 15 to 22 inches)
             );
             addItem(tire);
+
+            // 3D Printer
+            // Filament Seeding Setup
+            Filament filament = new Filament(
+                    faker.commerce().color() + " Filament",
+                    faker.number().randomDouble(2, 20, 60),
+                    faker.number().numberBetween(5, 25),
+                    faker.company().name(),
+                    faker.options().option("PLA", "ABS", "PETG", "TPU")
+            );
+            addItem(filament);
+
+            // Nozzle Seeding Setup
+            Nozzle nozzle = new Nozzle(
+                    "High Flow Brass Nozzle",
+                    faker.number().randomDouble(2, 8, 35),
+                    faker.number().numberBetween(10, 40),
+                    faker.company().name(),
+                    faker.options().option(0.4, 0.6, 0.8)
+            );
+            addItem(nozzle);
+            // 3D Printer
 
         }
     }
