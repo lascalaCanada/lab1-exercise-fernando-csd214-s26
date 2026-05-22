@@ -63,9 +63,9 @@ classDiagram
     PrinterItem <|-- Filament
     PrinterItem <|-- Nozzle
 
+%% Subclasses implement SaleableItem for individual sale logic
     SaleableItem <.. Filament
     SaleableItem <.. Nozzle
 
+%% Main interface implemented by the abstract parent to avoid repetition
     Editable <.. PrinterItem
-    Editable <.. Filament
-    Editable <.. Nozzle
